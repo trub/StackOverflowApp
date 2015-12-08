@@ -32,7 +32,6 @@
     _slideMenu.ll_springFramesNum = 60;
     
     
-    
     //===================
     // Menu View
     //===================
@@ -40,15 +39,15 @@
     [img setImage:[UIImage imageNamed:@"Head"]];
     [_slideMenu addSubview:img];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 140, 150, 400)];
-    label.text = @"text";
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 40, 150, 400)];
+    label.text = @"textLink\n\ntextLink1\n\ntextLink2";
     [label setTextColor:[UIColor whiteColor]];
     [label setNumberOfLines:0];
     [_slideMenu addSubview:label];
     
     
     //===================
-    // Gestures
+    // Call gestures
     //===================
     self.leftSwipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftHandle:)];
     self.leftSwipe.maximumNumberOfTouches = 1;
@@ -58,29 +57,23 @@
 
 
 //===================
-// 全屏侧滑手势监听
+// swipe gesture
 //===================
 - (void)swipeLeftHandle:(UIScreenEdgePanGestureRecognizer *)recognizer {
-    // 如果菜单已打开则禁止滑动
     if (_slideMenu.ll_isOpen) {
         return;
     }
-    // 计算手指滑的物理距离（滑了多远，与起始位置无关）
     CGFloat progress = [recognizer translationInView:self.view].x / (self.view.bounds.size.width * 1.0);
-    // 把这个百分比限制在 0~1 之间
     progress = MIN(1.0, MAX(0.0, progress));
     
-    // 当手势刚刚开始，我们创建一个 UIPercentDrivenInteractiveTransition 对象
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         
-        // 当手慢慢划入时，我们把总体手势划入的进度告诉 UIPercentDrivenInteractiveTransition 对象。
         [self.percent updateInteractiveTransition:progress];
         _slideMenu.ll_distance = [recognizer translationInView:self.view].x;
         
     } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
-        // 当手势结束，我们根据用户的手势进度来判断过渡是应该完成还是取消并相应的调用 finishInteractiveTransition 或者 cancelInteractiveTransition 方法.
         if (progress > 0.4) {
             [self.percent finishInteractiveTransition];
             [_slideMenu ll_openSlideMenu];
@@ -94,12 +87,9 @@
 
 
 //===================
-// 按钮监听
+// IBActions
 //===================
 - (IBAction)openLLSlideMenuAction:(id)sender {
-    //===================
-    // 打开菜单
-    //===================
     if (_slideMenu.ll_isOpen) {
         [_slideMenu ll_closeSlideMenu];
     } else {
