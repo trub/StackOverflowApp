@@ -26,7 +26,8 @@ NSString const *kRedirectURL =  @"https://stackexchange.com/oauth/login_success"
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.webView = [[WKWebView alloc]initWithFrame:self.view.frame];
+    self.webView = [[WKWebView alloc]init];
+    self.webView.frame = self.view.frame;
     [self.view addSubview:self.webView];
     
     self.webView.navigationDelegate = self;
@@ -58,9 +59,5 @@ NSString const *kRedirectURL =  @"https://stackexchange.com/oauth/login_success"
     decisionHandler (WKNavigationActionPolicyAllow);
     
 }
-
-
-
-
 
 @end
