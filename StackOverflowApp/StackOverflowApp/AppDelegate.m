@@ -21,41 +21,41 @@
     // Override point for customization after application launch.
     
     
-//    [self checkForAccessToken];
+    [self checkForAccessToken];
     
     return YES;
 }
 
-//-(void)checkForAccessToken{
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    
-//    NSString *accessToken = [userDefaults stringForKey:@"accessToken"];
-//    
-//    if(!accessToken){
-//        [self fetchAccessToken];
-//    }
-//}
-//
-//-(void)fetchAccessToken{
-//    UIViewController *rootViewController = self.window.rootViewController;
-//    
-//    OAuthWebViewController *oAuthVC = [[OAuthWebViewController alloc] init];
-//    
-//    __weak typeof(oAuthVC) weakOauthVC = oAuthVC;
-//    
-//    oAuthVC.completion = ^() {
-//        
-//        __strong typeof(oAuthVC) strongOauthVC = weakOauthVC;
-//        
-//        [strongOauthVC.view removeFromSuperview];
-//        [strongOauthVC removeFromParentViewController];
-//    };
-//    
-//    [rootViewController addChildViewController:oAuthVC];
-//    [rootViewController.view addSubview:oAuthVC.view];
-//    [oAuthVC didMoveToParentViewController:rootViewController];
-//    
-//}
+-(void)checkForAccessToken{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *accessToken = [userDefaults stringForKey:@"accessToken"];
+    
+    if(!accessToken){
+        [self fetchAccessToken];
+    }
+}
+
+-(void)fetchAccessToken{
+    UIViewController *rootViewController = self.window.rootViewController;
+    
+    OAuthWebViewController *oAuthVC = [[OAuthWebViewController alloc] init];
+    
+    __weak typeof(oAuthVC) weakOauthVC = oAuthVC;
+    
+    oAuthVC.completion = ^() {
+        
+        __strong typeof(oAuthVC) strongOauthVC = weakOauthVC;
+        
+        [strongOauthVC.view removeFromSuperview];
+        [strongOauthVC removeFromParentViewController];
+    };
+    
+    [rootViewController addChildViewController:oAuthVC];
+    [rootViewController.view addSubview:oAuthVC.view];
+    [oAuthVC didMoveToParentViewController:rootViewController];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
