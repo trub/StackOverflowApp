@@ -39,6 +39,7 @@
 		E1AAF8841C18D25100889D0A /* MainContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainContentViewController.m; sourceTree = "<group>"; };
 		E1AAF8891C18D3B100889D0A /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		E1AAF88A1C18D3B100889D0A /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		E1AAF88C1C18ECFA00889D0A /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 				E1AAF8811C18D24200889D0A /* MyQuestionsViewController.m */,
 				E1AAF8831C18D25100889D0A /* MainContentViewController.h */,
 				E1AAF8841C18D25100889D0A /* MainContentViewController.m */,
+				E1AAF88F1C18ECFD00889D0A /* Custom error */,
 			);
 			path = StackOverflowApp;
 			sourceTree = "<group>";
@@ -107,6 +109,14 @@
 				E1AAF80C1C166EB400889D0A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1AAF88F1C18ECFD00889D0A /* Custom error */ = {
+			isa = PBXGroup;
+			children = (
+				E1AAF88C1C18ECFA00889D0A /* Error.h */,
+			);
+			name = "Custom error";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
